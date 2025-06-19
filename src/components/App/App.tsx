@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import type { Image } from '../../types';
 import css from './App.module.css';
 import SearchBar from '../SearchBar/SearchBar';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
@@ -10,17 +11,17 @@ import { toast, Toaster } from 'react-hot-toast';
 import { fetchImages } from '../../unsplashAPI';
 
 export default function App() {
-  const [imageCollection, setImageCollection] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [imageCollection, setImageCollection] = useState<Image[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
 
-  const [searchQuery, setSearchQuery] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
-  const [modalImage, setModalImage] = useState(null);
-const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [modalImage, setModalImage] = useState<Image | null>(null);
+const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
-  const handleSearch = (newImage) => {
+  const handleSearch = (newImage: string): void => {
     setSearchQuery(newImage);
     setCurrentPage(1);
     setImageCollection([]);
@@ -28,12 +29,12 @@ const [modalIsOpen, setModalIsOpen] = useState(false);
     toast.success('Let’s see what the lens has found!');
   };
 
-  const openModal = (image) => {
+  const openModal = (image: Image): void => {
   setModalImage(image);
   setModalIsOpen(true);
 };
 
-  const incrementPage = () => {
+  const incrementPage = (): void => {
     setCurrentPage(currentPage + 1);
   };
 
@@ -62,7 +63,7 @@ const [modalIsOpen, setModalIsOpen] = useState(false);
   const isLastPage = currentPage === totalPages;
   const hasImages = imageCollection.length > 0;
 
-  const closeModal = () => {
+  const closeModal = (): void => {
   setModalIsOpen(false);
   setModalImage(null);
 };

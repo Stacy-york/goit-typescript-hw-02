@@ -1,6 +1,7 @@
 import css from './ImageCard.module.css';
+import type { ImageCardProps } from './ImageCard.types';
 
-export default function ImageCard({ image, onImageClick }) {
+export default function ImageCard({ image, onImageClick }: ImageCardProps) {
   const { urls, alt_description, user } = image;
 
   return (
