@@ -1,0 +1,20 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #dd5a5a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #6b4075;
+}
